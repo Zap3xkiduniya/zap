@@ -2,80 +2,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Alfisha Baby mujhe calcium chahiye 😘</title>
+<title>Taiyab ❤️ Alfisha</title>
 
 <style>
 body{
 margin:0;
-height:100vh;
+min-height:100vh;
+background:linear-gradient(135deg,#ff4d6d,#ffb6c1);
+font-family:Arial;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#05010f;
-font-family:Arial;
 overflow:hidden;
-perspective:1000px;
 }
-
-.neon{
-font-size:36px;
-color:#ff4dd2;
-text-shadow:0 0 10px #ff4dd2,0 0 30px #ff0080;
-animation:pulse 2s infinite;
-}
-@keyframes pulse{50%{text-shadow:0 0 50px #ff4dd2}}
 
 .card{
 background:white;
-width:330px;
-padding:15px;
+width:340px;
+padding:20px;
 border-radius:25px;
 text-align:center;
-transform-style:preserve-3d;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
 }
 
-/* Couple */
-.couple{
-display:flex;
-justify-content:space-between;
-margin:10px 0;
-position:relative;
-}
-
-.char{
-width:60px;height:120px;
-border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,.4);
-transition:.8s;
-}
-
-.boy{background:#4da6ff}
-.girl{background:#ff7aa2}
-
-.face{
-width:30px;height:30px;
-background:white;
-border-radius:50%;
-margin:10px auto;
-}
-
-/* Hug */
-.hug .boy{transform:translateX(40px)}
-.hug .girl{transform:translateX(-40px)}
-
-/* Kiss */
-.kiss{
-position:absolute;
-left:95px;
-top:40px;
-font-size:25px;
-opacity:0;
-animation:kiss 3s infinite;
-}
-@keyframes kiss{
-0%{opacity:0;transform:translateX(0)}
-50%{opacity:1}
-100%{opacity:0;transform:translateX(40px)}
+.neon{
+font-size:32px;
+color:#ff0080;
+text-shadow:0 0 10px #ff0080,0 0 25px #ff4da6;
 }
 
 /* Slider */
@@ -87,26 +40,31 @@ margin-top:10px;
 }
 .slider img.active{display:block}
 
+#text{
+min-height:190px;
+font-size:14px;
+white-space:pre-line;
+}
+
 /* Hearts */
 .heart{
 position:absolute;
-color:red;
 animation:float 5s linear infinite;
 }
+
 @keyframes float{
-0%{bottom:0}
-100%{bottom:100%}
+0%{bottom:0;opacity:1}
+100%{bottom:100%;opacity:0}
 }
 
 button{
-padding:10px 20px;
+padding:10px 25px;
 border:none;
 border-radius:20px;
 background:#ff4d6d;
 color:white;
+margin-top:10px;
 }
-
-#text{min-height:90px;font-size:14px}
 
 /* Fireworks */
 .fire{
@@ -137,7 +95,7 @@ opacity:0;
 
 .love{
 color:white;
-font-size:30px;
+font-size:32px;
 margin-top:20px;
 }
 </style>
@@ -145,15 +103,9 @@ margin-top:20px;
 
 <body>
 
-<div class="card" id="card">
+<div class="card">
 
 <h2 class="neon">Alfisha ❤️</h2>
-
-<div class="couple" id="couple">
-<div class="char boy"><div class="face"></div></div>
-<div class="kiss">💋</div>
-<div class="char girl"><div class="face"></div></div>
-</div>
 
 <div id="text"></div>
 
@@ -176,10 +128,18 @@ margin-top:20px;
 
 <script>
 
-/* Love Letter */
+/* Love Letter + Shayri */
 let msg=`Sorry meri jaan...
 Tum meri duniya ho.
 Tumhari ek smile mere liye sab kuch hai.
+
+Iss tarah humara imtehan na lejiye,
+Aise khafa hone ki waja toh bata di jiye,
+Kar do maaf agar koi bhool hoi humse,
+Aise baat na kar ke humein saza na di jiye.
+
+Mana kabhi kabhi hum takraar karte hain,
+Par hum khud se ziyada aapko piyaar karte hain.
 
 Please mujhe maaf kar do Alfisha 😔
 I Love You Forever ❤️`;
@@ -213,9 +173,6 @@ document.body.appendChild(h);
 setTimeout(()=>h.remove(),5000);
 },300);
 
-/* Hug loop */
-setInterval(()=>couple.classList.toggle("hug"),2000);
-
 /* Fireworks */
 function boom(){
 for(let i=0;i<25;i++){
@@ -238,16 +195,6 @@ clearInterval(fw);
 fire.style.display="none";
 },4000);
 }
-
-/* Swipe Rotate */
-let startX=0, rotY=0;
-card.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
-card.addEventListener("touchmove",e=>{
-let dx=e.touches[0].clientX-startX;
-rotY+=dx*0.3;
-card.style.transform=`rotateY(${rotY}deg)`;
-startX=e.touches[0].clientX;
-});
 
 </script>
 
