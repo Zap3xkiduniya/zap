@@ -7,43 +7,44 @@
 <style>
 body{
 margin:0;
-min-height:100vh;
-background:linear-gradient(135deg,#ff4d6d,#ffb6c1);
+height:100vh;
+background:black;
 font-family:Arial;
 display:flex;
 justify-content:center;
 align-items:center;
 overflow:hidden;
+color:white;
 }
 
 .card{
-background:white;
-width:340px;
-padding:20px;
+background:rgba(255,255,255,.08);
+padding:25px;
 border-radius:25px;
 text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,.3);
+width:340px;
+box-shadow:0 0 20px #ff0080;
 }
 
 .neon{
 font-size:32px;
 color:#ff0080;
-text-shadow:0 0 10px #ff0080,0 0 25px #ff4da6;
+text-shadow:0 0 10px #ff0080,0 0 30px #ff4da6;
 }
-
-/* Slider */
-.slider img{
-width:100%;
-border-radius:15px;
-display:none;
-margin-top:10px;
-}
-.slider img.active{display:block}
 
 #text{
-min-height:190px;
-font-size:14px;
 white-space:pre-line;
+min-height:220px;
+font-size:14px;
+}
+
+button{
+padding:10px 25px;
+border:none;
+border-radius:20px;
+background:#ff0080;
+color:white;
+margin-top:15px;
 }
 
 /* Hearts */
@@ -57,27 +58,7 @@ animation:float 5s linear infinite;
 100%{bottom:100%;opacity:0}
 }
 
-button{
-padding:10px 25px;
-border:none;
-border-radius:20px;
-background:#ff4d6d;
-color:white;
-margin-top:10px;
-}
-
 /* Fireworks */
-.fire{
-position:fixed;
-inset:0;
-background:black;
-display:none;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:9;
-}
-
 .boom{
 position:absolute;
 width:6px;height:6px;
@@ -93,11 +74,6 @@ opacity:0;
 }
 }
 
-.love{
-color:white;
-font-size:32px;
-margin-top:20px;
-}
 </style>
 </head>
 
@@ -109,26 +85,13 @@ margin-top:20px;
 
 <div id="text"></div>
 
-<div class="slider">
-<img src="boy1.jpg" class="active">
-<img src="girl1.jpg">
-<img src="boy2.jpg">
-<img src="girl2.jpg">
-<img src="boy3.jpg">
-</div>
-
 <p>Will you forgive me? 🥺</p>
 <button onclick="yes()">Yes</button>
 
 </div>
 
-<div class="fire" id="fire">
-<div class="love">I LOVE YOU FOREVER ❤️🎆</div>
-</div>
-
 <script>
 
-/* Love Letter + Shayri */
 let msg=`Sorry meri jaan...
 Tum meri duniya ho.
 Tumhari ek smile mere liye sab kuch hai.
@@ -141,15 +104,17 @@ Aise baat na kar ke humein saza na di jiye.
 Mana kabhi kabhi hum takraar karte hain,
 Par hum khud se ziyada aapko piyaar karte hain.
 
-Please mujhe maaf kar do Alfisha 😔 
+Please mujhe maaf kar do Alfisha 😔
+
 
 
 aur ha abse nhi mangunga kabhi apki photos wagaira aaj
 maine dekh liya kya sochte ho mere liye aap ek pal me anjaan bana diya apne 
 thank you 😊 mujhe mera asli aukat dikhane ke liye mai ab apke nazar me apka zism ka bhukha
-hu isliye ab apse gujarish hai aap apna photo mujhe na bheje 
+hu isliye ab apse gujarish hai aap apna photo mujhe na bheje
 
-
+aur ha apka photo tha mere phone 2 photos o bhi delete kar diya hu bas itna kehna tha mujhe 
+kyunki mujhe ab realise ho raha hai ki kuchh jyada hak jama rakha tha apke upar 
 
 
 I Love You Forever ❤️`;
@@ -164,15 +129,6 @@ setTimeout(type,40);
 }
 type();
 
-/* Slider */
-let pics=document.querySelectorAll(".slider img");
-let p=0;
-setInterval(()=>{
-pics[p].classList.remove("active");
-p=(p+1)%pics.length;
-pics[p].classList.add("active");
-},2000);
-
 /* Hearts */
 setInterval(()=>{
 let h=document.createElement("div");
@@ -185,25 +141,20 @@ setTimeout(()=>h.remove(),5000);
 
 /* Fireworks */
 function boom(){
-for(let i=0;i<25;i++){
+for(let i=0;i<30;i++){
 let b=document.createElement("div");
 b.className="boom";
-b.style.left=Math.random()*100+"%";
-b.style.top=Math.random()*100+"%";
-b.style.setProperty("--x",(Math.random()*200-100)+"px");
-b.style.setProperty("--y",(Math.random()*200-100)+"px");
-fire.appendChild(b);
+b.style.left="50%";
+b.style.top="50%";
+b.style.setProperty("--x",(Math.random()*300-150)+"px");
+b.style.setProperty("--y",(Math.random()*300-150)+"px");
+document.body.appendChild(b);
 setTimeout(()=>b.remove(),1000);
 }
 }
 
 function yes(){
-fire.style.display="flex";
-let fw=setInterval(boom,500);
-setTimeout(()=>{
-clearInterval(fw);
-fire.style.display="none";
-},4000);
+setInterval(boom,600);
 }
 
 </script>
